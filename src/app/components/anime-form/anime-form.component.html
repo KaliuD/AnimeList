@@ -1,20 +1,26 @@
 <form>
-    <div class="form-group row">
-        <label for="exampleFormControlFile1">Example file input</label>
-
-    </div>
     <div class="form-group">
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        <label for="exampleFormControlFile1">Escolha uma imagem</label>
     </div>
+    
+    <div class="d-none form-group">
+        <input type="file" 
+            class="form-control-file" #fileUpload
+            (change)="onFileSelected($event)">
+    </div>
+
+    <div class="form-group">
+        <button type="button" class="btn btn-secondary" (click)="fileUpload.click()">
+            {{imgName || "Nenhuma imagem selecionada"}}
+        </button>
+    </div>
+
     <div class="form-group">
         <label for="formGroupExampleInput">Nome</label>
         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Título do anime">
     </div>
-    <div class="form-group">
-        <label for="formGroupExampleInput2">Quantidade de Episodios</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ex: 12">
-    </div>
-    <button type="submit" class="btn btn-primary btn-block">
+
+    <button type="submit" class="btn btn-primary btn-block my-2">
         Upload
     </button>
 </form>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-anime-form',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnimeFormComponent implements OnInit {
 
-  constructor() { }
+  imgName:string;
+
+  // @ViewChild('fileUpload') fileUpload:ElementRef;
+
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+  }
+
+  onFileSelected(event){
+    const file:File = event.target.files[0];
+    if(file){
+      this.imgName = file.name;
+    }
   }
 
 }
